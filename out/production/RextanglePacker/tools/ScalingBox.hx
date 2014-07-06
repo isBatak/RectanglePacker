@@ -32,8 +32,6 @@ class ScalingBox extends Sprite {
     function get_newBoxHeight ():Float { return mNewHeight; }
 
     public function new(x:Float, y:Float, width:Float, height:Float) {
-        super();
-
         mX = x;
         mY = y;
 
