@@ -11,10 +11,16 @@
 
     <haxelib name="openfl" />
     <haxelib name="actuate" />
+	<!--
+	<haxedef name="HXCPP_DEBUGGER" />
+	<haxelib name="fdorg-hxcpp-debugger" />
+	-->
 
     <ios binaries="armv7" />
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg" />
 	<icon path="Assets/openfl.svg" />
-	
+	<!--
+	<cpp build-library="hxcpp" />
+	-->
 </project>

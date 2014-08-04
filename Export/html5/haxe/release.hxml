@@ -1,0 +1,17 @@
+-main ApplicationMain 
+-cp C:\HaxeToolkit\haxe\lib\openfl/2,0,1/
+-D openfl=2.0.1
+-cp C:\HaxeToolkit\haxe\lib\actuate/1,7,5/
+-D actuate=1.7.5
+-cp Source
+-cp C:\HaxeToolkit\haxe\lib\openfl/2,0,1/backends/html5
+-cp C:\HaxeToolkit\haxe\lib\openfl/2,0,1/backends/html5
+-D tools=1.5.7
+-D openfl-html5
+-D html5
+-D web
+--remap flash:openfl
+-js Export/html5/bin/RextanglePacker.js
+-cp Export/html5/haxe
+-D html5
+--macro allowPackage("flash")

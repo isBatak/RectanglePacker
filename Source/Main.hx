@@ -11,6 +11,7 @@ import utils.RectanglePacker;
 import openfl.text.TextField;
 import openfl.display.Sprite;
 import openfl.display.BitmapData;
+import Std;
 
 /**
 * Simple demo application for the RectanglePacker class.
@@ -39,9 +40,13 @@ class Main extends Sprite {
 		
 		super ();
 
-        addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+		#if HXCPP_DEBUGGER
+		new org.flashdevelop.cpp.debugger.HaxeRemote(true, "127.0.0.1");
+		#end
+		
+		addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
         addEventListener(Event.ENTER_FRAME, onEnterFrame);
-
+		
         var bitmap:Bitmap = new Bitmap(mBitmapData);
         addChild(bitmap);
         bitmap.x = BOX_MARGIN;
@@ -73,15 +78,15 @@ class Main extends Sprite {
         var height:Int;
         for (i in 0...10)
         {
-            width = 20 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER * SIZE_MULTIPLIER;
-            height = 20 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER * SIZE_MULTIPLIER;
+            width = Std.int(20 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER * SIZE_MULTIPLIER);
+            height = Std.int(20 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER * SIZE_MULTIPLIER);
             mRectangles.push(new Rectangle(0, 0, width, height));
         }
 
         for (j in 10...RECTANGLE_COUNT)
         {
-            width = 3 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER;
-            height = 3 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER;
+            width = Std.int(3 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER);
+            height = Std.int(3 * SIZE_MULTIPLIER + Math.floor(Math.random() * 8) * SIZE_MULTIPLIER);
             mRectangles.push(new Rectangle(0, 0, width, height));
         }
     }
@@ -95,9 +100,11 @@ class Main extends Sprite {
 
     private function onEnterFrame(event:Event):Void
     {
-        if (mScalingBox.boxWidth != mScalingBox.newBoxWidth || mScalingBox.boxHeight != mScalingBox.newBoxHeight)
+        
+		if (mScalingBox.boxWidth != mScalingBox.newBoxWidth || mScalingBox.boxHeight != mScalingBox.newBoxHeight)
         {
-            updateRectangles();
+			updateRectangles();
+			
         }
     }
 
@@ -106,18 +113,19 @@ class Main extends Sprite {
         var start:Int = Lib.getTimer();
         var padding:Int = 1;
 
+		
         if (mPacker == null)
         {
-            mPacker = new RectanglePacker(mScalingBox.newBoxWidth, mScalingBox.newBoxHeight, padding);
+			mPacker = new RectanglePacker(mScalingBox.newBoxWidth, mScalingBox.newBoxHeight, padding);
         }
         else
         {
-            mPacker.reset(mScalingBox.newBoxWidth, mScalingBox.newBoxHeight, padding);
+			mPacker.reset(mScalingBox.newBoxWidth, mScalingBox.newBoxHeight, padding);
         }
 
         for(i in 0...RECTANGLE_COUNT)
         {
-            mPacker.insertRectangle(mRectangles[i].width, mRectangles[i].height, i);
+            mPacker.insertRectangle(Std.int(mRectangles[i].width), Std.int(mRectangles[i].height), i);
         }
 
         mPacker.packRectangles();
@@ -127,7 +135,7 @@ class Main extends Sprite {
         if(mPacker.rectangleCount > 0)
         {
             mText.text = mPacker.rectangleCount + " rectangles packed in " + (end - start) + "ms";
-
+			
             mScalingBox.updateBox(mScalingBox.newBoxWidth, mScalingBox.newBoxHeight);
             mBitmapData.fillRect(mBitmapData.rect, 0xFFFFFFFF);
             var rect:Rectangle = new Rectangle();

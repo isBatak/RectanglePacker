@@ -3,35 +3,37 @@ package tools;
 import openfl.events.MouseEvent;
 import openfl.events.Event;
 import openfl.display.Sprite;
+import Std;
+import openfl.Lib;
 
 class ScalingBox extends Sprite {
 
-    private var mX:Float = 0.0;
-    private var mY:Float = 0.0;
-    private var mWidth:Float = 0.0;
-    private var mHeight:Float = 0.0;
-    private var mMaxWidth:Float = 0.0;
-    private var mMaxHeight:Float = 0.0;
+    private var mX:Int = 0;
+    private var mY:Int = 0;
+    private var mWidth:Int = 0;
+    private var mHeight:Int = 0;
+    private var mMaxWidth:Int = 0;
+    private var mMaxHeight:Int = 0;
 
-    private var mNewWidth:Float = 0.0;
-    private var mNewHeight:Float = 0.0;
+    private var mNewWidth:Int = 0;
+    private var mNewHeight:Int = 0;
 
     private var mDragBox:Sprite = new Sprite();
     private var mDragging:Bool = false;
 
-    public var boxWidth (get, never):Float;
-    function get_boxWidth ():Float { return mWidth; }
+    public var boxWidth (get, never):Int;
+    function get_boxWidth ():Int { return mWidth; }
 
-    public var boxHeight (get, never):Float;
-    function get_boxHeight ():Float { return mHeight; }
+    public var boxHeight (get, never):Int;
+    function get_boxHeight ():Int { return mHeight; }
 
-    public var newBoxWidth (get, never):Float;
-    function get_newBoxWidth ():Float { return mNewWidth; }
+    public var newBoxWidth (get, never):Int;
+    function get_newBoxWidth ():Int { return mNewWidth; }
 
-    public var newBoxHeight (get, never):Float;
-    function get_newBoxHeight ():Float { return mNewHeight; }
+    public var newBoxHeight (get, never):Int;
+    function get_newBoxHeight ():Int { return mNewHeight; }
 
-    public function new(x:Float, y:Float, width:Float, height:Float) {
+    public function new(x:Int, y:Int, width:Int, height:Int) {
         super();
 
         mX = x;
@@ -53,7 +55,7 @@ class ScalingBox extends Sprite {
         updateBox(width, height);
     }
 
-    public function updateBox(width:Float, height:Float):Void
+    public function updateBox(width:Int, height:Int):Void
     {
         mWidth = width;
         mHeight = height;
@@ -82,10 +84,10 @@ class ScalingBox extends Sprite {
     private function onMouseMove(event:MouseEvent):Void
     {
         if (mDragging)
-        {
-            mNewWidth = event.stageX - mX;
-            mNewHeight = event.stageY - mY;
-
+		{
+            mNewWidth = Std.int(event.stageX - mX);
+            mNewHeight = Std.int(event.stageY - mY);
+			//Lib.trace("onMouseMove: " + event.stageY +" "+ mY);
             if (mNewWidth > mMaxWidth)
             {
                 mNewWidth = mMaxWidth;

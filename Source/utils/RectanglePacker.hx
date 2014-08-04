@@ -2,6 +2,7 @@ package utils;
 
 import Array;
 import openfl.geom.Rectangle;
+import openfl.Lib;
 
 class RectanglePacker {
 
@@ -53,12 +54,12 @@ class RectanglePacker {
      * @param height
      */
     public function reset(width:Int, height:Int, padding:Int = 0):Void{
-        while (mInsertedRectangles.length)
+        while (mInsertedRectangles.length != 0)
         {
             freeRectangle(mInsertedRectangles.pop());
         }
 
-        while (mFreeAreas.length)
+        while (mFreeAreas.length != 0)
         {
             freeRectangle(mFreeAreas.pop());
         }
@@ -71,7 +72,7 @@ class RectanglePacker {
 
         mFreeAreas[0] = allocateRectangle(0, 0, mWidth, mHeight);
 
-        while (mInsertList.length)
+        while (mInsertList.length != 0)
         {
             freeSize(mInsertList.pop());
         }
@@ -88,7 +89,7 @@ class RectanglePacker {
     public function getRectangle(index:Int, rectangle:Rectangle):Rectangle
     {
         var inserted:IntegerRectangle = mInsertedRectangles[index];
-        if (rectangle)
+        if (rectangle != null)
         {
             rectangle.x = inserted.x;
             rectangle.y = inserted.y;
@@ -133,9 +134,9 @@ class RectanglePacker {
     {
         if(sort)
         {
-            mInsertList.sortOn("width", Array.NUMERIC);
+            mInsertList.sort(function(a,b) return Reflect.compare(a.width, b.width));
         }
-
+		
         while (mInsertList.length > 0)
         {
             var sortableSize:SortableSize = cast(mInsertList.pop(), SortableSize);
@@ -180,10 +181,14 @@ class RectanglePacker {
      */
     private function filterSelfSubAreas(areas:Array<IntegerRectangle>):Void
     {
-        for(i in (areas.length - 1)...0)
+        //for (var i:int = areas.length - 1; i >= 0; i--)
+		var i:Int = areas.length - 1;
+		while(i >= 0)
         {
             var filtered:IntegerRectangle = areas[i];
-            for(j in (areas.length - 1)...0)
+			//for (var j:int = areas.length - 1; j >= 0; j--)
+            var j:Int = areas.length - 1;
+			while(j >= 0)
             {
                 if(i != j)
                 {
@@ -200,7 +205,9 @@ class RectanglePacker {
                         break;
                     }
                 }
+				j--;
             }
+			i--;
         }
     }
 
@@ -225,13 +232,15 @@ class RectanglePacker {
         {
             targetWithPadding = target;
         }
-
-        for (i in (areas.length - 1)...0)
+		
+		// for (var i:int = areas.length - 1; i >= 0; i--)
+		var i:Int = areas.length - 1;
+        while(i >= 0)
         {
             var area:IntegerRectangle = areas[i];
             if (!(x >= area.right || right <= area.x || y >= area.bottom || bottom <= area.y))
             {
-                if (!targetWithPadding)
+                if (targetWithPadding == null)
                 {
                     targetWithPadding = allocateRectangle(target.x, target.y, target.width + mPadding, target.height + mPadding);
                 }
@@ -244,9 +253,10 @@ class RectanglePacker {
                     areas[i] = topOfStack;
                 }
             }
+			i--;
         }
 
-        if (targetWithPadding && targetWithPadding != target)
+        if (targetWithPadding != null && targetWithPadding != target)
         {
             freeRectangle(targetWithPadding);
         }
@@ -316,8 +326,9 @@ class RectanglePacker {
         var paddedWidth:Int = width + mPadding;
         var paddedHeight:Int = height + mPadding;
 
-        var count:Int = mFreeAreas.length;
-        for (i in (count - 1)...0)
+        // for(var i:int = count - 1; i >= 0; i--)
+		var i:Int = mFreeAreas.length - 1;
+		while(i >= 0)
         {
             var free:IntegerRectangle = mFreeAreas[i];
             if (free.x < mPackedWidth || free.y < mPackedHeight)
@@ -346,6 +357,7 @@ class RectanglePacker {
                     best = free;
                 }
             }
+			i--;
         }
 
         return index;

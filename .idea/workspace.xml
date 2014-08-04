@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78dd6fae-c94d-4e1c-9a80-a17f4b08477c" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Programiranje\Haxe_Projects\RextanglePacker\Source\org\villekoskela\RectanglePackerDemo.as" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programiranje\Haxe_Projects\RextanglePacker\Source\org\villekoskela\tools\ScalingBox.as" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programiranje\Haxe_Projects\RextanglePacker\Source\org\villekoskela\utils\IntegerRectangle.as" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programiranje\Haxe_Projects\RextanglePacker\Source\org\villekoskela\utils\RectanglePacker.as" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programiranje\Haxe_Projects\RextanglePacker\Source\org\villekoskela\utils\SortableSize.as" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Main.hx" afterPath="$PROJECT_DIR$/Source/Main.hx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/utils/RectanglePacker.hx" afterPath="$PROJECT_DIR$/Source/utils/RectanglePacker.hx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RextanglePacker.iml" afterPath="$PROJECT_DIR$/RextanglePacker.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/tools/ScalingBox.hx" afterPath="$PROJECT_DIR$/Source/tools/ScalingBox.hx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/utils/SortableSize.hx" afterPath="$PROJECT_DIR$/Source/utils/SortableSize.hx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="78dd6fae-c94d-4e1c-9a80-a17f4b08477c" name="Default" comment="" />
     <ignored path="RextanglePacker.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,8 +99,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1456" />
     <option name="height" value="876" />
   </component>
@@ -519,7 +507,7 @@
     <option name="totallyTimeSpent" value="36855000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1456" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
