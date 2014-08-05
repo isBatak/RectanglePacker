@@ -6,7 +6,7 @@
     <option name="openFLTarget" value="Windows" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/out/production/RextanglePacker" />
+    <output url="file://$MODULE_DIR$/out/production/RectanglePacker" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/Source" isTestSource="false" />

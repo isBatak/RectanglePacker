@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	
-	<meta title="RextanglePacker" package="com.example.rextanglepacker" version="1.0.0" company="Company Name" />
-	<app main="Main" path="Export" file="RextanglePacker" />
+	<meta title="RectanglePacker" package="com.example.rectanglepacker" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="RectanglePacker" />
 
     <window width="800" height="600" if="desktop" />
     <window width="0" height="0" if="html5" />
