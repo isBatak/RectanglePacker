@@ -1,5 +1,5 @@
 # Haxe/OpenFl port of villekoskelaorg's AS3 RectanglePacking 
-*https://github.com/villekoskelaorg/RectanglePacking
+* https://github.com/villekoskelaorg/RectanglePacking
 
 ## Flash
 ![Flash Example](https://raw.githubusercontent.com/isBatak/RextanglePacker/master/flash_example.gif)
